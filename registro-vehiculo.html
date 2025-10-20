@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DRIVEAR • Registro de Vehículo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --orange:#FF7A00;
+      --yellow:#FFD54F;
+      --bg:#0b0f1a;
+      --card:#101725;
+      --ring:rgba(255,138,0,.35);
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,sans-serif;color:#E5E7EB;background:linear-gradient(180deg,#0b0f1a 0%, #0e1424 100%)}
+    .container{width:min(1100px,92vw);margin:auto;padding:2rem 0}
+    header{position:sticky;top:0;background:rgba(11,15,26,.7);border-bottom:1px solid rgba(255,255,255,.08);backdrop-filter:blur(12px);}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 0}
+    .brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;color:#fff;font-weight:800}
+    .logo{width:34px;height:34px;border-radius:10px;background:conic-gradient(from 220deg at 50% 50%, var(--yellow), var(--orange), var(--yellow));box-shadow:0 6px 20px rgba(255,213,79,.35)}
+    .card{background:linear-gradient(180deg,rgba(255,122,0,.08),rgba(255,213,79,.05));border:1px solid rgba(255,255,255,.08);border-radius:18px;padding:1.5rem;margin-top:1rem}
+    form{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
+    label{font-size:.9rem;color:#cbd5e1}
+    input,select{width:100%;padding:.8rem 1rem;border-radius:12px;border:1px solid rgba(255,255,255,.08);background:#0f1526;color:#e5e7eb;outline:none;transition:border .2s,box-shadow .2s}
+    input:focus,select:focus{border-color:var(--orange);box-shadow:0 0 0 6px var(--ring)}
+    .full{grid-column:1/-1}
+    .btn{display:inline-flex;align-items:center;gap:.6rem;padding:.9rem 1.2rem;border-radius:14px;font-weight:700;letter-spacing:.2px;border:1px solid transparent;box-shadow:0 10px 30px rgba(255,122,0,.25);transition:.2s;cursor:pointer}
+    .btn-primary{background:linear-gradient(135deg,var(--orange),var(--yellow));color:#111827}
+    .btn-primary:hover{transform:translateY(-2px)}
+    .btn-ghost{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08)}
+    footer{margin:2rem 0;text-align:center;color:#94a3b8}
+    @media(max-width:760px){form{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="container nav">
+      <a href="index.html" class="brand">
+        <span class="logo"></span>
+        DRIVE<span style="color:var(--yellow)">AR</span>
+      </a>
+      <div style="display:flex;gap:1rem">
+        <a href="index.html">Inicio</a>
+        <a href="register.html">Registro usuario</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container">
+    <h1 style="font-size:2rem;font-weight:800;margin-bottom:.2rem">Registrar vehículo</h1>
+    <p style="color:#cbd5e1">Completá los datos de tu vehículo y su seguro asociado.</p>
+
+    <div class="card">
+      <form id="formVehiculo">
+        <div>
+          <label for="marca">Marca</label>
+          <input id="marca" name="marca" placeholder="Ej: Toyota" required>
+        </div>
+        <div>
+          <label for="modelo">Modelo</label>
+          <input id="modelo" name="modelo" placeholder="Ej: Corolla" required>
+        </div>
+        <div>
+          <label for="anio">Año</label>
+          <input id="anio" name="anio" type="number" min="1990" max="2025" placeholder="Ej: 2021" required>
+        </div>
+        <div>
+          <label for="patente">Patente</label>
+          <input id="patente" name="patente" placeholder="Ej: ABC123" required>
+        </div>
+        <div>
+          <label for="color">Color</label>
+          <input id="color" name="color" placeholder="Ej: Gris plata" required>
+        </div>
+        <div>
+          <label for="tipo">Tipo de transmisión</label>
+          <select id="tipo" name="tipo">
+            <option>Automático</option>
+            <option>Manual</option>
+          </select>
+        </div>
+        <div class="full">
+          <hr style="border:none;border-top:1px solid rgba(255,255,255,.1);margin:1rem 0">
+          <h3 style="margin:0 0 .4rem;color:#FFD54F">Datos del seguro</h3>
+        </div>
+        <div>
+          <label for="aseguradora">Aseguradora</label>
+          <input id="aseguradora" name="aseguradora" placeholder="Ej: La Caja" required>
+        </div>
+        <div>
+          <label for="numPoliza">Número de póliza</label>
+          <input id="numPoliza" name="numPoliza" placeholder="Ej: 456789123" required>
+        </div>
+        <div>
+          <label for="vigencia">Vigencia hasta</label>
+          <input id="vigencia" name="vigencia" type="date" required>
+        </div>
+        <div>
+          <label for="tipoCobertura">Tipo de cobertura</label>
+          <select id="tipoCobertura" name="tipoCobertura">
+            <option>Responsabilidad Civil</option>
+            <option>Todo Riesgo</option>
+            <option>Terceros Completo</option>
+          </select>
+        </div>
+        <div class="full" style="display:flex;gap:.8rem;flex-wrap:wrap;margin-top:1rem">
+          <button class="btn btn-primary" type="submit">Registrar vehículo</button>
+          <a class="btn btn-ghost" href="index.html">Cancelar</a>
+        </div>
+        <p class="full" id="msg" style="color:#94a3b8;font-size:.9rem">Demo sin backend: validación local.</p>
+      </form>
+    </div>
+  </main>
+
+  <footer>
+    © 2025 DRIVEAR • Registro de Vehículo (demo)
+  </footer>
+
+  <script>
+    const form = document.getElementById('formVehiculo');
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      alert('✅ Vehículo registrado correctamente (demo sin backend).');
+    });
+  </script>
+</body>
+</html>
