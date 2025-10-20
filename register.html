@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DRIVEAR • Registro de Usuario</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --orange:#FF7A00; /* principal */
+      --orange-700:#E86E00;
+      --yellow:#FFD54F; /* acento */
+      --ink:#0F172A;
+      --bg:#0b0f1a;
+      --card:#101725;
+      --muted:#94a3b8;
+      --ring: rgba(255, 138, 0, .35);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0; padding:0; font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; color:#E5E7EB; background:linear-gradient(180deg,#0b0f1a 0%, #0e1424 100%)}
+    a{color:inherit; text-decoration:none}
+    .container{width:min(1100px,92vw); margin:auto}
+
+    /* Navbar */
+    header{position:sticky; top:0; z-index:30; backdrop-filter:saturate(180%) blur(12px); background:rgba(11,15,26,.7); border-bottom:1px solid rgba(255,255,255,.06)}
+    .nav{display:flex; align-items:center; justify-content:space-between; padding:1rem 0}
+    .brand{display:flex; gap:.6rem; align-items:center}
+    .logo{width:32px; height:32px; border-radius:10px; background:conic-gradient(from 220deg at 50% 50%, var(--yellow), var(--orange), var(--yellow)); box-shadow:0 6px 16px rgba(255,213,79,.35)}
+    .brand b{letter-spacing:.3px}
+    .navlinks{display:flex; gap:1rem; color:#cbd5e1; font-weight:600}
+
+    /* Hero */
+    .hero{padding:clamp(2rem,6vw,3.5rem) 0 1rem}
+    .title{font-size:clamp(1.6rem,4.4vw,2.6rem); line-height:1.08; margin:0}
+    .subtitle{color:#cbd5e1; margin:.4rem 0 0}
+
+    /* Card/Form */
+    .card{margin-top:1.4rem; background:linear-gradient(180deg, rgba(255,122,0,.08), rgba(255,213,79,.05)); border:1px solid rgba(255,255,255,.08); border-radius:18px; padding:1.2rem; box-shadow:inset 0 1px 0 rgba(255,255,255,.04), 0 10px 30px rgba(0,0,0,.25)}
+    form{display:grid; grid-template-columns:repeat(2, 1fr); gap:1rem}
+    label{font-size:.9rem; color:#cbd5e1}
+    input, select{width:100%; padding:.9rem 1rem; border-radius:12px; border:1px solid rgba(255,255,255,.08); background:#0f1526; color:#e5e7eb; outline:none; transition:border .2s, box-shadow .2s}
+    input:focus, select:focus{border-color:var(--orange); box-shadow:0 0 0 6px var(--ring)}
+    .full{grid-column:1/-1}
+
+    .helper{color:#94a3b8; font-size:.85rem}
+    .row{display:flex; gap:.8rem; align-items:center; flex-wrap:wrap}
+
+    .btn{display:inline-flex; align-items:center; gap:.6rem; padding:.9rem 1.2rem; border-radius:14px; font-weight:800; letter-spacing:.2px; border:1px solid transparent; box-shadow:0 10px 28px rgba(255,122,0,.22); transition:transform .15s ease}
+    .btn-primary{background:linear-gradient(135deg,var(--orange), var(--yellow)); color:#111827}
+    .btn-ghost{background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.08)}
+    .btn:hover{transform:translateY(-2px)}
+
+    footer{margin:2rem 0; color:#94a3b8; text-align:center}
+
+    @media (max-width: 760px){
+      form{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <!-- Nav -->
+  <header>
+    <nav class="container nav" aria-label="Principal">
+      <a class="brand" href="index.html">
+        <span class="logo" aria-hidden="true"></span>
+        <b>DRIVE<span style="color:var(--yellow)">AR</span></b>
+      </a>
+      <div class="navlinks">
+        <a href="index.html">Inicio</a>
+        <a href="kpis.html">KPIs</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero container">
+    <h1 class="title">Crear cuenta</h1>
+    <p class="subtitle">Registrate como <b>Cliente</b> o <b>Chofer</b>. Los campos cambian según el rol seleccionado.</p>
+
+    <div class="card" role="region" aria-label="Formulario de registro">
+      <form id="form-registro" action="#" method="post" novalidate>
+        <!-- Identidad -->
+        <div>
+          <label for="nombre">Nombre</label>
+          <input id="nombre" name="nombre" placeholder="Ej: Agustín" required autocomplete="given-name">
+        </div>
+        <div>
+          <label for="apellido">Apellido</label>
+          <input id="apellido" name="apellido" placeholder="Ej: Gazza" required autocomplete="family-name">
+        </div>
+
+        <div>
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="tu@correo.com" required autocomplete="email">
+        </div>
+        <div>
+          <label for="telefono">Teléfono</label>
+          <input id="telefono" name="telefono" type="tel" placeholder="Ej: 11 2345-6789" required>
+        </div>
+
+        <div>
+          <label for="cuil">CUIT/CUIL</label>
+          <input id="cuil" name="cuil" inputmode="numeric" pattern="[0-9]{11}" placeholder="11 dígitos" required>
+        </div>
+        <div>
+          <label for="direccion">Dirección</label>
+          <input id="direccion" name="direccion" placeholder="Calle y número" required autocomplete="street-address">
+        </div>
+
+        <div>
+          <label for="rol">Registrarme como</label>
+          <select id="rol" name="rol" required>
+            <option value="cliente" selected>Cliente</option>
+            <option value="chofer">Chofer</option>
+          </select>
+        </div>
+        <div>
+          <label for="altura">Altura</label>
+          <input id="altura" name="altura" inputmode="numeric" pattern="[0-9]{1,5}" placeholder="Altura de la dirección" required>
+        </div>
+
+        <!-- Seguridad -->
+        <div>
+          <label for="pass">Contraseña</label>
+          <input id="pass" name="pass" type="password" minlength="6" placeholder="Mínimo 6 caracteres" required>
+        </div>
+        <div>
+          <label for="pass2">Repetir contraseña</label>
+          <input id="pass2" name="pass2" type="password" minlength="6" placeholder="Repetir" required>
+        </div>
+
+        <!-- Campos específicos para CHOFER -->
+        <div class="full helper">Si elegís <b>Chofer</b>, completá los datos de tu licencia.</div>
+        <div class="chofer-only" style="display:none">
+          <label for="licencia">N° de licencia</label>
+          <input id="licencia" name="licencia" placeholder="Ej: B-1234567">
+        </div>
+        <div class="chofer-only" style="display:none">
+          <label for="categoria">Categoría</label>
+          <input id="categoria" name="categoria" placeholder="Ej: B1, C, D…">
+        </div>
+        <div class="chofer-only" style="display:none">
+          <label for="vencimiento">Vencimiento licencia</label>
+          <input id="vencimiento" name="vencimiento" type="date">
+        </div>
+
+        <!-- Términos -->
+        <div class="full row" style="margin-top:.4rem">
+          <input type="checkbox" id="tyc" required>
+          <label for="tyc">Acepto los <a href="#">Términos y Condiciones</a>.</label>
+        </div>
+
+        <!-- Acciones -->
+        <div class="full row" style="margin-top:.6rem">
+          <button class="btn btn-primary" type="submit">Crear cuenta</button>
+          <a class="btn btn-ghost" href="index.html">Cancelar</a>
+        </div>
+
+        <!-- Mensaje demo -->
+        <p class="full helper" id="msg-demo" role="status">Demo sin backend: validación básica en el navegador.</p>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 DRIVEAR • Registro (mockup para demo)
+  </footer>
+
+  <script>
+    // Mostrar/ocultar campos de licencia si el rol es chofer
+    const rol = document.getElementById('rol');
+    const choferFields = () => document.querySelectorAll('.chofer-only');
+    const toggleChofer = () => {
+      const isChofer = rol.value === 'chofer';
+      choferFields().forEach(el => {
+        el.style.display = isChofer ? 'block' : 'none';
+        // si quisieras forzar required cuando es chofer
+        const input = el.querySelector('input');
+        if (input) input.required = isChofer;
+      });
+    };
+    rol.addEventListener('change', toggleChofer);
+    toggleChofer();
+
+    // Validación simple de contraseña
+    const form = document.getElementById('form-registro');
+    form.addEventListener('submit', (e) => {
+      const p1 = document.getElementById('pass').value;
+      const p2 = document.getElementById('pass2').value;
+      if (p1 !== p2) {
+        e.preventDefault();
+        alert('Las contraseñas no coinciden');
+      } else {
+        e.preventDefault();
+        alert('✅ Registro enviado (demo sin backend).');
+      }
+    });
+  </script>
+</body>
+</html>
